@@ -45,6 +45,7 @@ class Game{
     this.player2 =player2;
   }
    showOfCards() {
+     for (let i=0; i<100; i++){
     let p1c1 = this.player1.cards[0];
     console.log(p1c1);
     let p2c1 = this.player2.cards[0];
@@ -53,35 +54,37 @@ class Game{
     this.notEqual(p1c1,p2c1);
     }
     else {
-      let p1c1 = this.player1.cards[4];
-     console.log(p1c1);
-     let p2c1 = this.player2.cards[4];
-     console.log(p2c1); 
-     if (p1c1.Score !== p2c1.Score){
+      let p1c5 = this.player1.cards[4];
+     console.log(p1c5);
+     let p2c5 = this.player2.cards[4];
+     console.log(p2c5); 
+     if (p1c5.Score !== p2c5.Score){
        // transfer 5 cards to the winner
-      this.notEqual(p1c1,p2c1);
-      this.notEqual(p1c1,p2c1);
-      this.notEqual(p1c1,p2c1);
-      this.notEqual(p1c1,p2c1);
-      this.notEqual(p1c1,p2c1);
-       }
+       for (let j=0; j<5; j++) {
+      this.notEqual(p1c5,p2c5);
+      }
+      } else {     
+          console.log("equal after equal")
+         }
     }
-    console.log(this.player1.cards)
-    console.log(this.player2.cards)
+    //console.log(this.player1.cards)
+    //console.log(this.player2.cards)
    } 
+  }
    notEqual(p1,p2){
      console.log("Not equal cards, Player1: " + p1.Score + " Computer: " + p2.Score)
      if (p1.Score < p2.Score){ 
       this.player2.cards.push(this.player2.cards.shift())
       this.player2.cards.push(this.player1.cards.shift());
-      console.log(this.player2.name + " wins this round and it has this number of cards: " + this.player2.cards.length)
       console.log(this.player1.name + " Looses 1 card in this round and it has this number of cards: " + this.player1.cards.length)
-      } else if (p1.Score > p2.Score) { 
+      console.log(this.player2.name + " wins this round and it has this number of cards: " + this.player2.cards.length)  
+    } else if (p1.Score > p2.Score) { 
         this.player1.cards.push(this.player1.cards.shift());
         this.player1.cards.push(this.player2.cards.shift());
         console.log(this.player1.name + " wins this round and has this number of cards: " + this.player1.cards.length)
         console.log(this.player2.name + " Looses 1 card in this round and it has this number of cards: " +this.player2.cards.length)
         }
+        let flag = 0;
     }
   }
   
@@ -91,10 +94,10 @@ class Game{
   deck1 = DeckShuffled(rankA,scoreA,suits);
   let player1 = new Player("Player1");
   player1.addCards(deck1.slice(0,26));
-  console.log(player1.cards)
+  //console.log(player1.cards)
   let computer = new Player("Computer");
   computer.addCards(deck1.slice(26,52));
-  console.log(computer.cards)
+  //console.log(computer.cards)
   let game1 = new Game(player1,computer);
   game1.showOfCards();
 

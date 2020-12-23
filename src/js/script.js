@@ -63,10 +63,20 @@ class Game{
        for (let j=0; j<5; j++) {
       this.notEqual(p1c5,p2c5);
       }
-      } else {     
+      } else {   
+        let p1c9 = this.player1.cards[8];
+        console.log(p1c9);
+        let p2c9 = this.player2.cards[8];
+        console.log(p2c9); 
+        if (p1c9.Score !== p2c9.Score){
+          // transfer 5 cards to the winner
+          for (let k=0; k<5; k++) {
+         this.notEqual(p1c9,p2c9);
+         }
           console.log("equal after equal")
          }
     }
+  }
     //console.log(this.player1.cards)
     //console.log(this.player2.cards)
    } 

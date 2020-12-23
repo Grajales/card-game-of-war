@@ -53,35 +53,42 @@ class Game{
     this.notEqual(p1c1,p2c1);
     }
     else {
-      let p1c1 = this.player1.cards[5];
+      let p1c1 = this.player1.cards[4];
      console.log(p1c1);
-     let p2c1 = this.player2.cards[5];
+     let p2c1 = this.player2.cards[4];
      console.log(p2c1); 
-     this.notEqual(p1c1,p2c1);
+     if (p1c1.Score !== p2c1.Score){
+       // transfer 5 cards to the winner
+      this.notEqual(p1c1,p2c1);
+      this.notEqual(p1c1,p2c1);
+      this.notEqual(p1c1,p2c1);
+      this.notEqual(p1c1,p2c1);
+      this.notEqual(p1c1,p2c1);
+       }
     }
+    console.log(this.player1.cards)
+    console.log(this.player2.cards)
    } 
    notEqual(p1,p2){
      console.log("Not equal cards, Player1: " + p1.Score + " Computer: " + p2.Score)
      if (p1.Score < p2.Score){ 
+      this.player2.cards.push(this.player2.cards.shift())
       this.player2.cards.push(this.player1.cards.shift());
-      console.log("Computer number of cards: " + this.player2.cards.length)
-      console.log(this.player2.name + " wins this round")
-      console.log("Player1 number of cards: " + this.player1.cards.length)
-      console.log(this.player1.name + " Looses 1 card in this round")
+      console.log(this.player2.name + " wins this round and it has this number of cards: " + this.player2.cards.length)
+      console.log(this.player1.name + " Looses 1 card in this round and it has this number of cards: " + this.player1.cards.length)
       } else if (p1.Score > p2.Score) { 
+        this.player1.cards.push(this.player1.cards.shift());
         this.player1.cards.push(this.player2.cards.shift());
-        console.log("Player1 number of cards: " + this.player1.cards.length)
-        console.log(this.player1.name + " wins this round") 
-        console.log("Computer number of cards: " +this.player2.cards.length)
-        console.log(this.player2.name + " Looses 1 card in this round")}
+        console.log(this.player1.name + " wins this round and has this number of cards: " + this.player1.cards.length)
+        console.log(this.player2.name + " Looses 1 card in this round and it has this number of cards: " +this.player2.cards.length)
+        }
     }
   }
   
   //sign = window.prompt('Are you feeling lucky? You are Player1!'); // open the window with Text "Are you feeling lucky"
-  sign = prompt('Are you feeling lucky? You are Player1!'); // open the window with Text "Are you feeling lucky"
-  console.log(sign);
+  //sign = prompt('Are you feeling lucky? You are Player1!'); // open the window with Text "Are you feeling lucky"
+  //console.log(sign);
   deck1 = DeckShuffled(rankA,scoreA,suits);
-  console.log(deck1);
   let player1 = new Player("Player1");
   player1.addCards(deck1.slice(0,26));
   console.log(player1.cards)
